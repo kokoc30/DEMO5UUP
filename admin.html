@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Admin Panel - RFCE Senior Living Community</title>
+    <meta name="description" content="Administrative panel for RFCE Senior Living Community content management.">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body class="page-admin">
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">RFCE Admin</div>
+            <ul class="nav-menu">
+                <li><a href="./index.html" class="nav-link">Home</a></li>
+                <li><a href="./gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="./blog.html" class="nav-link">Blog</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.25A9.75 9.75 0 1 0 21.75 12c0-.101-.004-.201-.012-.3A7.5 7.5 0 0 1 12 2.25Z"/>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Admin Login Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="section-title reveal">Admin Panel</h1>
+                    <p class="section-subtitle reveal">Content management system for RFCE Senior Living Community</p>
+                </div>
+                
+                <!-- Login Form -->
+                <form class="contact-form reveal" data-admin-login style="max-width: 400px; margin: 0 auto;">
+                    <h2 style="text-align: center; margin-bottom: var(--space-2xl); color: var(--text-primary);">Admin Login</h2>
+                    
+                    <div class="form-group">
+                        <label for="admin-email" class="form-label">Email Address</label>
+                        <input type="email" id="admin-email" name="email" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin-password" class="form-label">Password</label>
+                        <input type="password" id="admin-password" name="password" class="form-input" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        Login
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard Section -->
+        <section class="section" data-admin-dash style="display: none;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Dashboard</h2>
+                    <div style="margin-top: var(--space-lg);">
+                        <button class="btn btn-outline" data-admin-logout>Logout</button>
+                    </div>
+                </div>
+
+                <!-- Image Management -->
+                <div style="margin-bottom: var(--space-3xl);">
+                    <h3 style="margin-bottom: var(--space-lg); color: var(--text-primary);">Image Management</h3>
+                    
+                    <div class="row" style="gap:12px;margin:8px 0;">
+                        <label><input type="radio" name="imgDest" value="gallery" checked> Gallery</label>
+                        <label><input type="radio" name="imgDest" value="blog"> Blog</label>
+                    </div>
+                    
+                    <div style="margin-bottom: var(--space-lg);">
+                        <label for="adminUpload" class="form-label">Upload New Image</label>
+                        <input type="file" id="adminUpload" accept="image/*" class="form-input" />
+                    </div>
+                    
+                    <div class="grid" data-admin-images style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-lg);">
+                        <!-- Images will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Post Management -->
+                <div>
+                    <h3 style="margin-bottom: var(--space-lg); color: var(--text-primary);">Post Management</h3>
+                    
+                    <form class="contact-form" data-admin-post>
+                        <div class="form-group">
+                            <label for="post-title" class="form-label">Title <span class="req" aria-hidden="true">*</span></label>
+                            <input type="text" id="post-title" name="title" class="form-input" required aria-required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post-slug" class="form-label">Slug <span class="hint">(optional)</span></label>
+                            <input type="text" id="post-slug" name="slug" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post-excerpt" class="form-label">Excerpt <span class="hint">(optional)</span></label>
+                            <textarea id="post-excerpt" name="excerpt" class="form-textarea" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post-cover" class="form-label">Cover Path <span class="hint">(optional)</span></label>
+                            <input type="text" id="post-cover" name="cover_path" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post-tags" class="form-label">Tags <span class="hint">(optional)</span> <span class="hint">Press comma or Enter to add</span></label>
+                            <div class="tags-input" data-tags-input>
+                                <input type="text" class="tags-entry" data-tags-entry placeholder="Type a tag...">
+                            </div>
+                            <input type="hidden" name="tags" data-tags-hidden>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post-body" class="form-label">Body Content <span class="hint">(optional)</span></label>
+                            <textarea id="post-body" name="body" class="form-textarea" rows="10"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Create Post
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RFCE Admin</h3>
+                    <p>Administrative panel for content management and system administration.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="./index.html">Return to Site</a></p>
+                    <p><a href="./gallery.html">Gallery</a></p>
+                    <p><a href="./blog.html">Blog</a></p>
+                    <p><a href="./contact.html">Contact</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 RFCE Senior Living Community. All rights reserved. | Admin Panel</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BEGIN:supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+      const SUPABASE_URL  = "https://turczccfuupwgewlhcej.supabase.co";   // <-- REPLACE
+      const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR1cmN6Y2NmdXVwd2dld2xoY2VqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1NjM3NTgsImV4cCI6MjA3MzEzOTc1OH0.dQFc74Mu_c6hwtOfIDZ_lUTYJZT3RFnQqLKg3DJor_g";                      // <-- REPLACE
+      window.supa = window.supa || supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+    </script>
+    <!-- END:supabase -->
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>
